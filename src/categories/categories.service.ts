@@ -3,6 +3,7 @@ import { CreateCategoryDto } from './dto/create-category.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Category } from './schemas/category.schema';
 import * as mongoose from 'mongoose';
+import { ValidationUtil } from 'src/utils/validation.util';
 
 @Injectable()
 export class CategoriesService {
@@ -23,6 +24,8 @@ export class CategoriesService {
   }
 
   async findOne(id: string): Promise<Category> {
+    ValidationUtil.validateObjectId(id);
+
     const category = await this.categoryModel.findById({ _id: id });
 
     if (!category) {

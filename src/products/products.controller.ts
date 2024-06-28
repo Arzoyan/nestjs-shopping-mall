@@ -46,10 +46,3 @@ export class ProductsController {
     return await this.productsService.delete(id);
   }
 }
-
-// {
-//   title?: string;
-//   description?: string;
-//   price?: number;
-//   sku?: string;
-// }
